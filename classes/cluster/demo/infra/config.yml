@@ -96,11 +96,3 @@ parameters:
           enabled: true
           http: ${_param:http_proxy}
           https: ${_param:https_proxy}
-      env:
-        http_proxy: ${_param:http_proxy}
-        https_proxy: ${_param:https_proxy}
-        no_proxy:
-        - .cezdata.corp
-        - .demo.local
-        - 10.0.0.0/8
-        - 172.24.0.0/13
