@@ -4,6 +4,8 @@ echo '127.0.1.1 cfg01' >> /etc/hosts
 export HOSTNAME=cfg01 # might need to be changed
 export DOMAIN="demo.local" # might need to be changed
 export CLUSTER_NAME=demo
+export HTTP_PROXY="http://http-proxy.cezdata.corp:8080"
+export HTTPS_PROXY=$HTTP_PROXY
 
 export FORMULAS_SOURCE="pkg"
 export EXTRA_FORMULAS="linux salt reclass maas memcached openssh ntp  sphinx \
