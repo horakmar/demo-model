@@ -40,7 +40,7 @@ parameters:
     salt_master_base_environment: prd
     salt_minion_ca_host: ${linux:network:fqdn}
     jenkins_client_user: admin
-    jenkins_client_password: admin
+    jenkins_client_password: admin4
     jenkins_master_host: ${_param:reclass_config_master}
     jenkins_master_port: 18081
     gerrit_admin_user: robot-github-worker
@@ -95,4 +95,17 @@ parameters:
         pkg:
           enabled: true
           http: ${_param:http_proxy}
-          https: ${_param:https_proxy}
+  docker:
+    host:
+      proxy:
+        enabled: true
+        http: ${_param:http_proxy}
+        https: ${_param:http_proxy}
+        no_proxy:
+          - localhost
+          - 127.0.0.1
+          - .cezdata.corp
+          - .demo.local
+          - 10.0.0.0/8
+          - 172.24.0.0/13
+ 
