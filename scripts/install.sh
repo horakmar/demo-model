@@ -14,6 +14,7 @@ export EXTRA_FORMULAS="linux salt reclass maas memcached openssh ntp  sphinx \
   gerrit artifactory influxdb horizon nginx collectd heka mysql backupninja galera nagios keepalived"
 export MASTER_HOSTNAME=${HOSTNAME}.${DOMAIN}
 export MINION_ID=$HOSTNAME
+export RECLASS_VERSION="master"
 export RECLASS_IGNORE_CLASS_NOTFOUND=False
 export RECLASS_ADDRESS="https://github.com/horakmar/demo-model.git"
 export SALT_MASTER_IP=127.0.0.1

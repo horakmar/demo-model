@@ -4,6 +4,7 @@ classes:
 #- system.linux.system.repo.mcp.salt
 # Add docker apt repisitory
 #- system.linux.system.repo.docker
+#- system.linux.system.repo.ubuntu
 - system.salt.master.api
 - system.salt.master.pkg
 - system.openssh.client.lab
@@ -13,7 +14,7 @@ classes:
 - system.docker
 - system.docker.client.compose
 - system_extra.docker.client.compose.service.jenkins
-#- system_extra.docker.client.compose.service.gerrit
+- system_extra.docker.client.compose.service.gerrit
 # Jenkins configuration
 - system.jenkins.master.config
 - service.jenkins.support
@@ -23,6 +24,9 @@ classes:
 # Jenkins job definition
 - system_extra.jenkins.client.job.template
 - system_extra.jenkins.client.job.inline
+# Gerrit config
+- system.gerrit.client
+#
 - cluster.demo
 parameters:
   _param:
@@ -72,6 +76,27 @@ parameters:
       BdiPchpO75nv3iNaKknV1svHzZ3NhZtJstRBEbJvlfGcADxJPta3Ce9jB2gn+IxC
       AsH/ZlzpwOtSvwCp8iojgWlI6TrB56ZdCSuBCIOEM01zgAdQrGie
       -----END RSA PRIVATE KEY-----
+    gerrit_admin_public_key: |
+      ----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAumJ72W4Jmzu+Grg7U7//
+      GTsNWCADuxIA5eYyTDvN3BhNF/DTUxedCcTtMZOZnIAZvx/AzfGL6L/JKh/wXSGl
+      ShZwkGZqybqQvObAaKs+Gjjz/tIHZa6a9n/NbsCDjPfoWEhfZm4F028VWV78hrde
+      n3vqiSwamQFj11Llp504WnR1UDVrOXjzajJVW9h518pKH5KWNMCXVL98SUpOTAjI
+      L7pQWODosgebOmJ8wOaWiz2BYnQt6ynOe8meoR5sZZ0ntn6Ag8wGxiULvcLah4hN
+      1OpiWkLceurxWv+aJSXmkvgRQC/GffKrFZUnU8vAs3mlQUGOm5+N1bsO2Beky/Mp
+      pQIDAQAB
+      -----END PUBLIC KEY-----
+    gerrit_auth_type: LDAP
+    mysql_gerrit_password: gerritm
+    mysql_admin_password: myadm
+    gerrit_admin_password: gerritadm
+    gerrit_admin_email: "horak.martin@gmail.com"
+    gerrit_public_host: http://localhost:18083
+    gerrit_ldap_account_base: "ou=uzivatele,dc=cezdata,dc=corp"
+    gerrit_ldap_server: "ldap://addc.cezdata.corp"
+    gerrit_ldap_bind_password: "izeer3pohS2Og@"
+    gerrit_ldap_group_base: "ou=uzivatele,dc=cezdata,dc=corp"
+    gerrit_ldap_bind_user: "qpzabbix@cezdata.corp"
   jenkins:
     client:
       user:
